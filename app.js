@@ -1,19 +1,22 @@
-var express = require("express");
-var app = express();
-var request = require("request");
-var bodyparser = require("body-parser");
+require('dotenv').config()
+let express = require("express"),
+    app = express(),
+    PORT = process.env.PORT || 3000,
+    path = require('path'),
+    bodyparser = require('body-parser'),
+    request = require('request')
+
 
 app.use(bodyparser.urlencoded({
     extended: true
 }));
 app.use(bodyparser.json());
 
-app.use(express.static('views'));
-app.use(express.static('public'));
+app.use(express.static('./public'))
 
-app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/views/index.html");
-});
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname + '/public/index.html'))
+})
 
 
 app.get("/api", function (req, res) {
@@ -36,6 +39,8 @@ app.get("/api", function (req, res) {
     })
 });
 
-app.listen(8080, function () {
-    console.log("server start at 8080");
-});
+
+app.listen(PORT, err => {
+    if (err) return console.log(err)
+    console.log(`server running at ${PORT}`)
+})
