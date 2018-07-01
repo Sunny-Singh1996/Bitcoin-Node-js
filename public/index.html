@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+ <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/styles/style.css">
+        <link rel="stylesheet" href="/assets/styles/anim.css">
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="/assets/bootstrap/bootstrap.min.js"></script>
+    </head>
+    <body background="assets/img/PIC.jpg">
+        <header>
+            <center>
+           <h2 style="color: white;"><img src="assets/img/Bitcoin.svg.png"  height="40" width="40" >&nbsp;Bitcoin Currency Status<br>
+        <h6><center>Frontend Sunny Singh, Backend Aalok Yadav.</center></h6></h6></h2>
+        </center>
+        </header><br>
+        <div class="container" id="div1">
+            <h3 class="text-center">Search for current bitcoin status</h3><br>
+            <form id="form">      
+                <input type="text" class="form-control" placeholder="Search" name="search" style="width:302px;height:34px;border-radius: 0px;">
+                <button class="btn btn-default ripple" type="submit" style="border-radius: 0px;" onclick="loadDoc()">Submit</button>  
+            </form>
+
+            <div id="clouds">
+                <div class="bitcoin b1"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60"><br><br><br><br>
+                    <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:150px;"></div>
+                <div class="bitcoin b2"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60">
+                    <br><br><br><br>
+                    <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:250px;"></div>
+                <div class="bitcoin b3"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60">
+                    <br><br><br><br>
+                    <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:-100px;"></div>
+                <div class="bitcoin b4"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60">
+                    <br><br><br><br>
+                    <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:-150px;"></div>
+                <div class="bitcoin b5"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60">
+                    <br><br><br><br>
+                    <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:-150px;"></div>
+                <div class="bitcoin b2"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60">
+                        <br><br><br><br>
+                <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:-150px;"></div>
+                <div class="bitcoin b4"><img src="assets/img/Bitcoin.svg.png"  height="60" width="60">
+                            <br><br><br><br>
+                <img src="assets/img/Bitcoin.svg.png"  height="50" width="50" style="margin-left:-150px;"></div>
+            </div>
+        </div>
+            <div class="container" id="div2">
+                <h2 class="text-center"><span id="code"></span></h2>
+                <h5 class="text-center">RateFloat - <span id="ratefloat"></span></h5>
+                <h4 class="text-center">Rate - <span id="rate"></span></h4>
+            </div>
+            <div class="container" id="div2">
+                <h2 class="text-center"><span id="code1"></span></h2>
+                <h5 class="text-center">RateFloat - <span id="ratefloat1"></span></h5>
+                <h4 class="text-center">Rate - <span id="rate1"></span></h4>
+            </div>
+    </body>
+    <script type="text/javascript">
+    $('#form').on('submit', e => {
+    e.preventDefault()
+    
+            $.get('/api', $('#form').serialize()).done(data => {
+
+                document.getElementById('code').innerHTML = "<h1>" + JSON.stringify(data.USD.code) + "</h1>"
+                document.getElementById('ratefloat').innerHTML = JSON.stringify(data.USD.rate_float)
+                document.getElementById('rate').innerHTML = JSON.stringify(data.USD.rate)
+
+                document.getElementById('code1').innerHTML = JSON.stringify(data.currentCurrency.code)
+                document.getElementById('ratefloat1').innerHTML = JSON.stringify(data.currentCurrency.rate_float)
+                document.getElementById('rate1').innerHTML = JSON.stringify(data.currentCurrency.rate)   
+            })
+        })
+    </script>
+</html>

@@ -1,0 +1,50 @@
+#div1{
+    height:170px;
+    width:86%;
+    margin-top: -20px;
+    background-color: white; 
+    color: rgb(247, 58, 58);
+    box-shadow: 0 0 10px rgba(0,0,0, .65);
+}
+#div2{
+    height:140px;
+    margin-top:28px;
+    margin-bottom:35px;
+    width:80%;
+    background-color: 	#DC143C; 
+    color: whitesmoke;
+}
+input{
+    width:100%;
+    box-shadow: 0 0 10px rgba(0,0,0, .65);
+}
+button{
+   width:80px;
+}
+form{
+    display: flex;
+    justify-content: center;
+}
+h5{
+    color: black;
+    font-size:1.2em;
+    font-weight:bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h6{
+    color: white;
+}
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .ripple:hover {
+    background: #f9fbfc radial-gradient(circle, transparent 1%, #f4f5f5 1%) center/15000%;
+  }
+  .ripple:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+  
+
